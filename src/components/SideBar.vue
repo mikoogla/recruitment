@@ -1,5 +1,9 @@
 <template>
-	<div v-show="isExpanded" class="sidebar-container">sidebar</div>
+	<div v-show="isExpanded" class="sidebar-container">
+		<div class="logo-position">
+			<v-img src="@/assets/logo-full.png" contain max-width="150" class="" />
+		</div>
+	</div>
 	<div class="expand">
 		<v-btn @click="isExpanded = !isExpanded">
 			<span v-if="!isExpanded" class="material-symbols-outlined">
@@ -13,7 +17,7 @@
 export default {
 	name: "SideBar",
 	data: () => ({
-		isExpanded: false,
+		isExpanded: true,
 	}),
 }
 </script>
@@ -24,10 +28,17 @@ export default {
 	max-width: 264px;
 	height: 100%;
 	background-color: $color-sidebar;
+	padding: 2rem 0.5rem;
 }
 .expand {
 	position: absolute;
 	left: 0;
 	top: 50%;
+}
+.logo-position {
+	width: 100%;
+	display: flex;
+	padding: 0 1rem;
+	justify-content: start;
 }
 </style>

@@ -6,6 +6,11 @@ import BackgroundTile from './BackgroundTile.vue';
 			<span class="material-symbols-outlined mr-4 point"> search </span>
 			<input type="text" class="search-input" placeholder="Search" />
 		</BackgroundTile>
+
+		<div class="icons-container">
+			<span class="material-symbols-outlined"> notifications_active </span
+			><span class="material-symbols-outlined"> notifications_active </span>
+		</div>
 	</div>
 </template>
 
@@ -25,6 +30,11 @@ export default {
 }
 .point {
 	cursor: pointer;
+}
+.icons-container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 }
 input {
 	border: none;
