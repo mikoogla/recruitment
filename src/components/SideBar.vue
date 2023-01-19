@@ -13,6 +13,13 @@
 				:notifications="item.notifications"
 			/>
 		</div>
+		<hr />
+		<div class="favorites-container">
+			<div class="favorites-title">
+				Favorites
+				<span class="material-symbols-outlined"> more_horiz </span>
+			</div>
+		</div>
 	</div>
 	<div class="expand">
 		<v-btn @click="isExpanded = !isExpanded">
@@ -41,6 +48,10 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "@/styles/imports.scss";
+hr {
+	border-top: 1px solid #9896a1;
+	opacity: 0.2;
+}
 .sidebar-container {
 	position: absolute;
 	left: 0;
@@ -66,5 +77,22 @@ export default {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+}
+.favorites-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1rem;
+}
+.favorites-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: 400;
+	color: #9896a1;
+
+	& .material-symbols-outlined {
+		cursor: pointer;
+	}
 }
 </style>

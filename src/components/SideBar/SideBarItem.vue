@@ -60,6 +60,7 @@ export default {
 	border: 1px solid #ebebf3;
 	border-radius: 4px;
 	color: #0a041c;
+	font-weight: 600;
 	& .material-symbols-outlined {
 		color: #7445fb;
 	}
