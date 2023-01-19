@@ -29,6 +29,5 @@ export default {
 }
 .double-grid {
 	grid-area: 2 / 1 / 3 / 3;
-	height: 500px;
 }
 </style>

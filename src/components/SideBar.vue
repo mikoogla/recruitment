@@ -3,11 +3,15 @@
 		<div class="logo-position">
 			<v-img src="@/assets/logo-full.png" contain max-width="150" class="" />
 		</div>
-		<div class="items-container">
-			<SiedeBarItem />
-			<SiedeBarItem />
-			<SiedeBarItem />
-			<SiedeBarItem />
+		<div class="items-container my-12">
+			<SideBarItem
+				v-for="item in sidebarItems"
+				:key="item.name"
+				:selected="item.selected"
+				:icon="item.icon"
+				:text="item.name"
+				:notifications="item.notifications"
+			/>
 		</div>
 	</div>
 	<div class="expand">
@@ -20,14 +24,19 @@
 	</div>
 </template>
 <script>
-import SiedeBarItem from "./SideBar/SiedeBarItem.vue"
+import SideBarItem from "./SideBar/SideBarItem.vue"
+import SideBarItemsData from "./SideBar/sidebarItemsData"
 
 export default {
 	name: "SideBar",
 	data: () => ({
 		isExpanded: true,
+		sidebarItems: [],
 	}),
-	components: { SiedeBarItem },
+	components: { SideBarItem },
+	mounted() {
+		this.sidebarItems = SideBarItemsData
+	},
 }
 </script>
 <style scoped lang="scss">
@@ -45,7 +54,7 @@ export default {
 .expand {
 	position: absolute;
 	left: 0;
-	top: 50%;
+	bottom: 50px;
 }
 .logo-position {
 	width: 100%;
