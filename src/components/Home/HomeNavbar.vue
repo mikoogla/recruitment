@@ -1,25 +1,41 @@
 <template>
 	<div class="nav-container">
 		<SearchBar />
+		<div class="icons-container">
+			<BackgroundTile
+				><span class="material-symbols-outlined">
+					notifications_active
+				</span></BackgroundTile
+			>
+			<BackgroundTile>
+				<span class="material-symbols-outlined"> menu </span>
+			</BackgroundTile>
+		</div>
 	</div>
 </template>
 <script>
+import BackgroundTile from "../UI/BackgroundTile.vue"
 import SearchBar from "../UI/SearchBar.vue"
 export default {
 	name: "HomeNavbar",
-	components: { SearchBar },
+	components: { SearchBar, BackgroundTile },
 }
 </script>
 <style scoped lang="scss">
 .nav-container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 	min-height: 4rem;
 	width: 100%;
 }
+.icons-container {
+	display: flex;
+	gap: 1rem;
 
-.search-container {
-	padding: 1rem;
-	width: 232px;
+	& .material-symbols-outlined {
+		cursor: pointer;
+	}
 }
 </style>
