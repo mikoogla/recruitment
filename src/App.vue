@@ -1,6 +1,6 @@
 <template>
 	<v-app theme="light">
-		<v-main>
+		<v-main class="d-flex">
 			<SideBar />
 			<router-view />
 		</v-main>
@@ -18,3 +18,9 @@ export default {
 	components: { SideBar },
 }
 </script>
+<style scoped lang="scss">
+@import "@/styles/imports.scss";
+</style>
+<style lang="scss">
+@import "@/styles/imports.scss";
+</style>
