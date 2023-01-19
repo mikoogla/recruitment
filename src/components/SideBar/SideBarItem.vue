@@ -39,9 +39,7 @@ export default {
 <style scoped lang="scss">
 .item {
 	font-weight: 400;
-	font-size: 1.125rem;
 	color: #9896a1;
-
 	display: flex;
 	align-items: center;
 	justify-content: start;
@@ -49,7 +47,7 @@ export default {
 	padding: 0.5rem;
 	cursor: pointer;
 	& .material-symbols-outlined {
-		font-size: 2rem;
+		font-size: 1.5rem;
 		font-weight: 400;
 	}
 	&:hover {
@@ -72,7 +70,7 @@ export default {
 	background-color: #ff5e5e;
 	color: white;
 	border-radius: 30px;
-	padding: 0.25rem 0.5rem;
+	padding: 0.1rem 0.5rem;
 	font-size: 0.75rem;
 	font-weight: 600;
 }

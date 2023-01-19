@@ -1,7 +1,7 @@
 <template>
 	<div v-show="isExpanded" class="sidebar-container">
 		<div class="logo-position">
-			<v-img src="@/assets/logo-full.png" contain max-width="150" class="" />
+			<v-img src="@/assets/logo-full.png" contain max-width="100" class="" />
 		</div>
 		<div class="items-container my-12">
 			<SideBarItem
