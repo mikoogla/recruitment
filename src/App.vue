@@ -2,6 +2,7 @@
 	<v-app theme="light" style="max-height: 900px">
 		<v-main class="d-flex">
 			<SideBar />
+
 			<router-view />
 		</v-main>
 	</v-app>

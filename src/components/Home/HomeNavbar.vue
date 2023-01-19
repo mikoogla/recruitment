@@ -2,12 +2,12 @@
 	<div class="nav-container">
 		<SearchBar />
 		<div class="icons-container">
-			<BackgroundTile hover
+			<BackgroundTile :hover="true"
 				><span class="material-symbols-outlined">
 					notifications_active
 				</span></BackgroundTile
 			>
-			<BackgroundTile hover="true">
+			<BackgroundTile :hover="true">
 				<span class="material-symbols-outlined"> menu </span>
 			</BackgroundTile>
 		</div>
