@@ -20,10 +20,18 @@ export default defineComponent({
 </script>
 <style scoped lang="scss">
 .home-container {
-	margin: 2rem 4rem;
+	margin-left: 264px;
+	padding: 2rem 4rem;
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	max-height: 900px;
 	width: 100%;
+	overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+	.home-container {
+		margin-left: 0;
+	}
 }
 </style>

@@ -3,6 +3,12 @@
 		<div class="logo-position">
 			<v-img src="@/assets/logo-full.png" contain max-width="150" class="" />
 		</div>
+		<div class="items-container">
+			<SiedeBarItem />
+			<SiedeBarItem />
+			<SiedeBarItem />
+			<SiedeBarItem />
+		</div>
 	</div>
 	<div class="expand">
 		<v-btn @click="isExpanded = !isExpanded">
@@ -14,19 +20,25 @@
 	</div>
 </template>
 <script>
+import SiedeBarItem from "./SideBar/SiedeBarItem.vue"
+
 export default {
 	name: "SideBar",
 	data: () => ({
 		isExpanded: true,
 	}),
+	components: { SiedeBarItem },
 }
 </script>
 <style scoped lang="scss">
 @import "@/styles/imports.scss";
 .sidebar-container {
-	width: 30%;
-	max-width: 264px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 264px;
 	height: 100%;
+	max-height: 900px;
 	background-color: $color-sidebar;
 	padding: 2rem 0.5rem;
 }
@@ -40,5 +52,10 @@ export default {
 	display: flex;
 	padding: 0 1rem;
 	justify-content: start;
+}
+.items-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 </style>

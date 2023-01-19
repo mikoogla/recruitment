@@ -1,9 +1,7 @@
 <template>
 	<div class="dashboard-container mt-10">
-		<CurrentBalanceTile />
-
-		<SummaryTile />
-
+		<CurrentBalanceTile class="upper-tile" />
+		<SummaryTile class="upper-tile" />
 		<InfoTile class="double-grid" />
 	</div>
 </template>
@@ -26,7 +24,11 @@ export default {
 	grid-template-rows: repeat(2, 1fr);
 	grid-gap: 2rem;
 }
+.upper-tile {
+	height: 336px;
+}
 .double-grid {
 	grid-area: 2 / 1 / 3 / 3;
+	height: 500px;
 }
 </style>

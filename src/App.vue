@@ -1,5 +1,5 @@
 <template>
-	<v-app theme="light">
+	<v-app theme="light" style="max-height: 900px">
 		<v-main class="d-flex">
 			<SideBar />
 			<router-view />
@@ -20,6 +20,9 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "@/styles/imports.scss";
+.v-main {
+	max-height: 900px;
+}
 </style>
 <style lang="scss">
 @import "@/styles/imports.scss";
