@@ -2,12 +2,12 @@
 	<div class="nav-container">
 		<SearchBar />
 		<div class="icons-container">
-			<BackgroundTile
+			<BackgroundTile hover
 				><span class="material-symbols-outlined">
 					notifications_active
 				</span></BackgroundTile
 			>
-			<BackgroundTile>
+			<BackgroundTile hover="true">
 				<span class="material-symbols-outlined"> menu </span>
 			</BackgroundTile>
 		</div>
@@ -36,6 +36,7 @@ export default {
 
 	& .material-symbols-outlined {
 		cursor: pointer;
+		color: #9896a1;
 	}
 }
 </style>

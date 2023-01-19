@@ -51,8 +51,8 @@ export default {
 		font-weight: 400;
 	}
 	&:hover {
-		background-color: #f7f7f9;
-		transition: background-color 0.2s ease-in-out;
+		background-color: #ffffff;
+		transition: all 0.2s ease-in-out;
 	}
 }
 .selected {
@@ -63,6 +63,9 @@ export default {
 	font-weight: 600;
 	& .material-symbols-outlined {
 		color: #7445fb;
+	}
+	&:hover {
+		background-color: #ebebf3;
 	}
 }
 .notifications {

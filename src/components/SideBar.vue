@@ -88,7 +88,7 @@ hr {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-weight: 400;
+	font-weight: 600;
 	color: #9896a1;
 
 	& .material-symbols-outlined {
