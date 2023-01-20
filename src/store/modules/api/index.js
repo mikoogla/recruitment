@@ -6,7 +6,7 @@ export default {
 	namespaced: false,
 	state() {
 		return {
-			data: [],
+			data: {},
 		}
 	},
 	mutations: mutations,

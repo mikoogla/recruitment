@@ -4,11 +4,11 @@ import actions from "./actions.js"
 import getters from "./getters.js"
 import mutations from "./mutations.js"
 
-import loginModule from "./modules/login/index.js"
+import apiModule from "./modules/api/index.js"
 
 const store = createStore({
 	modules: {
-		loginModule: loginModule,
+		apiModule: apiModule,
 	},
 	state() {
 		return {}
