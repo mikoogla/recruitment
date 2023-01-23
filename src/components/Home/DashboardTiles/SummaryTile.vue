@@ -17,9 +17,9 @@ import ChartComponent from "../ChartComponent.vue"
 export default {
 	data() {
 		return {
-			labels: ["January", "February", "March", "April", "May", "June", "July"],
+			labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
 			chartName: "BTC Price",
-			stats: [6335, 5339, 8330, 8331, 5326, 5115, 4011],
+			stats: [6335, 5339, 12000, 8331, 5326, 5115, 4011],
 		}
 	},
 	name: "SummaryTile",

@@ -14,6 +14,7 @@ import {
 	Title,
 	Tooltip,
 	Legend,
+	Filler,
 } from "chart.js"
 import { Line } from "vue-chartjs"
 
@@ -24,7 +25,8 @@ ChartJS.register(
 	LineElement,
 	Title,
 	Tooltip,
-	Legend
+	Legend,
+	Filler
 )
 
 export default {
@@ -55,14 +57,32 @@ export default {
 						label: this.chartName,
 						data: this.stats,
 						pointStyle: false,
-						backgroundColor: "#7445FB",
+						backgroundColor: context => {
+							//create gradient
+							let gradient = context.chart.ctx.createLinearGradient(
+								0,
+								0,
+								0,
+								400
+							)
+							gradient.addColorStop(0, "rgba(116, 69, 251, 0.3)")
+							gradient.addColorStop(1, "rgba(255,255,255, 0)")
+							return gradient
+						},
 						borderColor: "#7445FB",
+						pointBackgroundColor: "#7445FB",
+						fill: true,
 						tension: 0.3,
-						spanGaps: false,
 					},
 				],
 			},
+
 			options: {
+				interaction: {
+					intersect: false,
+					mode: "nearest",
+				},
+
 				responsive: true,
 				maintainAspectRatio: true,
 				scales: {
@@ -81,9 +101,7 @@ export default {
 							drawTicks: false,
 							lineWidth: 1,
 							color: "#858585",
-							zeroLineColor: "rgba(0, 0, 0, 0.1)",
 							zeroLineWidth: 1,
-
 							borderDash: [2, 5],
 							tickColor: "blue",
 						},
@@ -94,10 +112,15 @@ export default {
 						beginAtZero: true,
 						ticks: {
 							callback: function (value) {
-								if (value < 1000) return value
+								if (value === 0) return value
 								return value / 1000 + "k"
 							},
 						},
+					},
+				},
+				plugins: {
+					legend: {
+						display: false,
 					},
 				},
 			},
