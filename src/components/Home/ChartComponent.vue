@@ -123,6 +123,7 @@ export default {
 						display: false,
 					},
 					tooltip: {
+						yAlign: "bottom",
 						pointStyle: true,
 						usePointStyle: true,
 						displayColors: false,
@@ -137,7 +138,13 @@ export default {
 				elements: {
 					point: {
 						radius: 0,
-						hoverRadius: 4,
+						hoverRadius: 6,
+						color: "rgba(151,187,205,1)",
+						strokeColor: "#fff",
+						highlightFill: "#fff",
+						highlightStroke: "rgba(151,187,205,1)",
+						pointBackgroundColor: "white",
+						hoverBorderWidth: 3,
 					},
 				},
 			},
