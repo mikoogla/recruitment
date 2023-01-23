@@ -53,11 +53,12 @@ export default {
 				datasets: [
 					{
 						label: this.chartName,
+						data: this.stats,
 						pointStyle: false,
 						backgroundColor: "#7445FB",
 						borderColor: "#7445FB",
-						data: this.stats,
 						tension: 0.3,
+						spanGaps: false,
 					},
 				],
 			},
@@ -65,7 +66,31 @@ export default {
 				responsive: true,
 				maintainAspectRatio: true,
 				scales: {
+					x: {
+						grid: {
+							display: true,
+							drawBorder: false,
+							drawOnChartArea: false,
+							drawTicks: false,
+						},
+					},
 					y: {
+						grid: {
+							display: true,
+							drawBorder: true,
+							drawTicks: false,
+							lineWidth: 1,
+							color: "#858585",
+							zeroLineColor: "rgba(0, 0, 0, 0.1)",
+							zeroLineWidth: 1,
+
+							borderDash: [2, 5],
+							tickColor: "blue",
+						},
+						border: {
+							dash: [1, 6],
+						},
+
 						beginAtZero: true,
 						ticks: {
 							callback: function (value) {
