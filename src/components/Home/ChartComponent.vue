@@ -95,6 +95,7 @@ export default {
 						},
 					},
 					y: {
+						grace: "10%",
 						grid: {
 							display: true,
 							drawBorder: true,
@@ -123,6 +124,8 @@ export default {
 						display: false,
 					},
 					tooltip: {
+						caretPadding: 15,
+						distance: 10,
 						yAlign: "bottom",
 						pointStyle: true,
 						usePointStyle: true,
