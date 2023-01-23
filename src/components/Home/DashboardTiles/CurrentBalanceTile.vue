@@ -8,6 +8,15 @@
 			<p>$</p>
 			{{ balance.toLocaleString("en-US").replace(",", " ") }}
 		</div>
+		<div class="change py-4 w-100">
+			<span class="material-symbols-outlined"> trending_up </span>
+			<p>12%</p>
+			vs last month
+		</div>
+		<div class="buttons">
+			<v-btn class="btn btn-primary" color="indigo">Quick Invest</v-btn>
+			<v-btn class="btn btn-primary" variant="outlined">Show Report</v-btn>
+		</div>
 	</BackgroundTile>
 </template>
 <script>
@@ -39,7 +48,7 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 1rem 2rem;
+	padding: 1rem 2rem 2rem 2rem;
 }
 .title {
 	width: 100%;
@@ -64,5 +73,25 @@ export default {
 		color: #9896a1;
 		font-weight: 400;
 	}
+}
+.change {
+	display: flex;
+	align-items: center;
+	color: #2dc78f;
+	& p {
+		font-weight: 400;
+		margin: 0 0.5rem;
+	}
+	& .material-symbols-outlined {
+		font-size: 1.5rem;
+	}
+}
+.buttons {
+	display: flex;
+	justify-content: start;
+	align-items: flex-end;
+	width: 100%;
+	height: 100%;
+	gap: 1rem;
 }
 </style>
