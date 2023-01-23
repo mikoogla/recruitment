@@ -21,13 +21,14 @@ export default {
 	name: "SummaryTile",
 	components: { BackgroundTile, InfoTabs, InfoItem },
 	methods: {
-		...mapActions(["fetchData"]),
+		...mapActions(["fetchData", "fetchHistory"]),
 	},
 	computed: {
 		...mapGetters(["getData"]),
 	},
 	mounted() {
 		this.fetchData()
+		this.fetchHistory()
 	},
 }
 </script>

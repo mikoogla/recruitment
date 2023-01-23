@@ -7,6 +7,10 @@ module.exports = defineConfig({
 				target: "http://localhost:4000",
 				changeOrigin: true,
 			},
+			"^/history": {
+				target: "http://localhost:4000",
+				changeOrigin: true,
+			},
 		},
 	},
 	pluginOptions: {
