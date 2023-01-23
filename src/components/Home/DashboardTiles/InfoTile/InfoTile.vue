@@ -1,15 +1,20 @@
 <template>
 	<BackgroundTile radius="1rem" id="info-container"
-		><div>tabs</div>
+		><InfoTabs />
 		<hr />
-		<div>items</div>
+		<InfoItem />
 	</BackgroundTile>
 </template>
 <script>
 import BackgroundTile from "../../../UI/BackgroundTile.vue"
+import InfoItem from "./InfoItem.vue"
+import InfoTabs from "./InfoTabs.vue"
 export default {
+	data() {
+		return {}
+	},
 	name: "SummaryTile",
-	components: { BackgroundTile },
+	components: { BackgroundTile, InfoTabs, InfoItem },
 }
 </script>
 <style lang="scss" scoped>
