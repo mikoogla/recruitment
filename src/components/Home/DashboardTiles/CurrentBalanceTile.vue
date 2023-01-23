@@ -14,7 +14,9 @@
 			vs last month
 		</div>
 		<div class="buttons">
-			<v-btn class="btn btn-primary" color="indigo">Quick Invest</v-btn>
+			<v-btn class="btn btn-primary" variant="tonal" color="indigo"
+				>Quick Invest</v-btn
+			>
 			<v-btn class="btn btn-primary" variant="outlined">Show Report</v-btn>
 		</div>
 	</BackgroundTile>
