@@ -2,10 +2,11 @@
 	<div class="info-item w-100">
 		{{ name }}
 		<div class="price">
+			Price: ${{ getData[name][0].quote["USD"].price.toFixed(2) }}
+		</div>
+		<div class="price">
 			Change:
-			{{
-				(getData[name][0].quote["USD"].percent_change_24h * 100).toFixed(2)
-			}}
+			{{ getData[name][0].quote["USD"].percent_change_24h.toFixed(2) }}
 			%
 		</div>
 	</div>

@@ -2,7 +2,6 @@
 	<BackgroundTile radius="1rem" id="info-container"
 		><InfoTabs />
 		<hr class="mb-6" />
-		<!-- {{ getData["BTC"][0].id }} -->
 		<InfoItem
 			v-for="currencyName in Object.keys(getData)"
 			:key="currencyName"

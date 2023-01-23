@@ -7,9 +7,9 @@ app.use(express.json())
 const api = axios.create({
 	method: "GET",
 	baseURL:
-		"https://sandbox-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=BTC,ETH,ADA,AVAX,XRP",
+		"https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=BTC,ETH,ADA,AVAX,XRP",
 	headers: {
-		"X-CMC_PRO_API_KEY": "b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c",
+		"X-CMC_PRO_API_KEY": process.env.COINMARKETCAP_API,
 	},
 })
 app.get("/api", (_, res) => {
