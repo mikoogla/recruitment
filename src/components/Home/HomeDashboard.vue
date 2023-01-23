@@ -8,7 +8,7 @@
 <script>
 import CurrentBalanceTile from "./DashboardTiles/CurrentBalanceTile.vue"
 import SummaryTile from "./DashboardTiles/SummaryTile.vue"
-import InfoTile from "./DashboardTiles/InfoTile.vue"
+import InfoTile from "./DashboardTiles/InfoTile/InfoTile.vue"
 
 export default {
 	name: "MenuComponent",
