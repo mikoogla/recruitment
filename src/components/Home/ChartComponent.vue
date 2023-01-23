@@ -53,9 +53,9 @@ export default {
 				datasets: [
 					{
 						label: this.chartName,
-						pointStyle: "circle",
-						backgroundColor: "#00ff6a",
-						borderColor: "#00ff6a",
+						pointStyle: false,
+						backgroundColor: "#7445FB",
+						borderColor: "#7445FB",
 						data: this.stats,
 						tension: 0.3,
 					},
