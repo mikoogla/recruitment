@@ -1,7 +1,8 @@
 <template>
 	<BackgroundTile radius="1rem" id="summary"
-		><div class="title w-100 ml-4 text-start">
+		><div class="title w-100 text-start">
 			<h2>Summary</h2>
+			<span class="material-symbols-outlined"> more_horiz </span>
 		</div>
 		<ChartComponent
 			:labels="labels"
@@ -38,9 +39,17 @@ export default {
 	height: 100%;
 }
 .title {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
 	h2 {
 		font-weight: 500;
 	}
-	padding: 1rem 0;
+	padding: 1rem;
+	& .material-symbols-outlined {
+		font-size: 1.5rem;
+		cursor: pointer;
+		color: #9896a1;
+	}
 }
 </style>

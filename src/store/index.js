@@ -11,7 +11,9 @@ const store = createStore({
 		apiModule: apiModule,
 	},
 	state() {
-		return {}
+		return {
+			currentBalance: 21432.23,
+		}
 	},
 	mutations: mutations,
 	actions: actions,

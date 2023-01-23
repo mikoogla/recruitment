@@ -1,1 +1,5 @@
-export default {};
+export default {
+	getCurrentBalance(state) {
+		return state.currentBalance
+	},
+}
