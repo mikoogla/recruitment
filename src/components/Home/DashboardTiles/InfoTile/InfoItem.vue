@@ -17,9 +17,14 @@
 				)
 			}}
 		</div>
+		<div class="buttons d-flex">
+			<CustomButton inverted>Sell</CustomButton>
+			<CustomButton class="ml-2">Buy</CustomButton>
+		</div>
 	</div>
 </template>
 <script>
+import CustomButton from "@/components/UI/CustomButton.vue"
 import { mapGetters } from "vuex"
 
 export default {
@@ -33,6 +38,7 @@ export default {
 	computed: {
 		...mapGetters(["getData", "getHistoricalData"]),
 	},
+	components: { CustomButton },
 }
 </script>
 <style lang="scss" scoped>

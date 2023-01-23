@@ -14,20 +14,19 @@
 			vs last month
 		</div>
 		<div class="buttons">
-			<v-btn class="btn btn-primary" variant="tonal" color="indigo"
-				>Quick Invest</v-btn
-			>
-			<v-btn class="btn btn-primary" variant="outlined">Show Report</v-btn>
+			<CustomButton>Quick Invest</CustomButton>
+			<CustomButton inverted>Show Raport</CustomButton>
 		</div>
 	</BackgroundTile>
 </template>
 <script>
 // import { mapActions } from "vuex"
+import CustomButton from "@/components/UI/CustomButton.vue"
 import { mapGetters } from "vuex"
 import BackgroundTile from "../../UI/BackgroundTile.vue"
 export default {
 	name: "SummaryTile",
-	components: { BackgroundTile },
+	components: { BackgroundTile, CustomButton },
 
 	computed: {
 		...mapGetters({
