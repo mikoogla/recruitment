@@ -1,28 +1,24 @@
 <template>
-	<BackgroundTile radius="1rem"
-		>current balance
-		<button @click="fetchBTCPrice">request</button>
-	</BackgroundTile>
+	<BackgroundTile radius="1rem">{{ Object.keys(getData) }} </BackgroundTile>
 </template>
 <script>
 // import { mapActions } from "vuex"
+import { mapActions, mapGetters } from "vuex"
 import BackgroundTile from "../../UI/BackgroundTile.vue"
 export default {
 	name: "SummaryTile",
 	components: { BackgroundTile },
 	methods: {
-		async fetchBTCPrice() {
-			try {
-				const res = await fetch("/api")
-				console.log("response: ", res.json())
-			} catch (err) {
-				console.log(err)
-			}
-		},
+		...mapActions(["fetchData"]),
+	},
+	computed: {
+		...mapGetters(["getData"]),
 	},
 	mounted() {
-		console.log("mounted")
-		this.fetchBTCPrice()
+		this.fetchData().then(() => {
+			console.log("data fetched")
+			console.log(">>>>>data:", this.getData)
+		})
 	},
 }
 </script>
