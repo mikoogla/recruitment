@@ -62,10 +62,11 @@ export default {
 								0,
 								0,
 								0,
-								400
+								250
 							)
 							gradient.addColorStop(0, "rgba(116, 69, 251, 0.3)")
 							gradient.addColorStop(1, "rgba(255,255,255, 0)")
+
 							return gradient
 						},
 						borderColor: "#7445FB",
