@@ -1,7 +1,7 @@
 <template>
 	<div class="dashboard-container mt-10">
-		<CurrentBalanceTile class="upper-tile" />
-		<SummaryTile class="upper-tile" />
+		<CurrentBalanceTile class="single-grid one" />
+		<SummaryTile class="single-grid two" />
 		<InfoTile class="double-grid" />
 	</div>
 </template>
@@ -20,14 +20,31 @@ export default {
 .dashboard-container {
 	gap: 1rem;
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(2, 1fr);
+	grid-template-columns: 1fr 1fr;
 	grid-gap: 2rem;
 }
-.upper-tile {
+.single-grid {
 	height: 336px;
+	&.one {
+		grid-row-start: 1;
+		grid-column-start: 1;
+
+		grid-row-end: 2;
+		grid-column-end: 2;
+	}
+	&.two {
+		grid-row-start: 1;
+		grid-column-start: 2;
+
+		grid-row-end: 2;
+		grid-column-end: 3;
+	}
 }
 .double-grid {
-	grid-area: 2 / 1 / 3 / 3;
+	grid-row-start: 2;
+	grid-column-start: 1;
+
+	grid-row-end: 3;
+	grid-column-end: 3;
 }
 </style>

@@ -9,6 +9,14 @@
 			{{ getData[name][0].quote["USD"].percent_change_24h.toFixed(2) }}
 			%
 		</div>
+		<div class="price">
+			History:
+			{{
+				getHistoricalData[name].quotes.map(quote =>
+					quote.quote.USD.price.toFixed(2)
+				)
+			}}
+		</div>
 	</div>
 </template>
 <script>
@@ -23,7 +31,7 @@ export default {
 		},
 	},
 	computed: {
-		...mapGetters(["getData"]),
+		...mapGetters(["getData", "getHistoricalData"]),
 	},
 }
 </script>
