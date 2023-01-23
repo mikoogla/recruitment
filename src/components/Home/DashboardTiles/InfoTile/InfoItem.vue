@@ -1,6 +1,13 @@
 <template>
 	<div class="info-item w-100">
-		{{ name }}
+		<div class="name d-flex flex-column w-25">
+			<div class="short">
+				{{ name }}
+			</div>
+			<div class="long">
+				{{ translate.find(translation => translation.name === name).fullName }}
+			</div>
+		</div>
 		<div class="price">
 			Price: ${{ getData[name][0].quote["USD"].price.toFixed(2) }}
 		</div>
@@ -26,9 +33,15 @@
 <script>
 import CustomButton from "@/components/UI/CustomButton.vue"
 import { mapGetters } from "vuex"
+import fullNames from "./fullNames"
 
 export default {
 	name: "InfoItem",
+	data() {
+		return {
+			translate: [],
+		}
+	},
 	props: {
 		name: {
 			type: String,
@@ -37,6 +50,9 @@ export default {
 	},
 	computed: {
 		...mapGetters(["getData", "getHistoricalData"]),
+	},
+	beforeMount() {
+		this.translate = fullNames
 	},
 	components: { CustomButton },
 }
@@ -53,5 +69,14 @@ export default {
 	padding: 1rem 2rem;
 	border-radius: 0.5rem;
 	margin-bottom: 0.5rem;
+}
+.name {
+	& .short {
+		color: #9896a1;
+	}
+	& .long {
+		color: #0a041c;
+		font-weight: 600;
+	}
 }
 </style>
