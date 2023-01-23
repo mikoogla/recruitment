@@ -1,7 +1,7 @@
 <template>
 	<BackgroundTile radius="1rem" id="summary"
 		><div class="title w-100 ml-4 text-start">
-			<h1>Summary</h1>
+			<h2>Summary</h2>
 		</div>
 		<ChartComponent
 			:labels="labels"
@@ -36,5 +36,11 @@ export default {
 .chart {
 	width: 100%;
 	height: 100%;
+}
+.title {
+	h2 {
+		font-weight: 500;
+	}
+	padding: 1rem 0;
 }
 </style>

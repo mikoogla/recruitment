@@ -56,7 +56,7 @@ export default {
 					{
 						label: this.chartName,
 						data: this.stats,
-						pointStyle: false,
+						// pointStyle: false,
 						backgroundColor: context => {
 							let gradient = context.chart.ctx.createLinearGradient(
 								0,
@@ -70,7 +70,7 @@ export default {
 							return gradient
 						},
 						borderColor: "#7445FB",
-						usePointStyle: false,
+						// usePointStyle: false,
 						fill: true,
 						tension: 0.3,
 					},
@@ -123,13 +123,21 @@ export default {
 						display: false,
 					},
 					tooltip: {
-						usePointStyle: false,
+						pointStyle: true,
+						usePointStyle: true,
 						displayColors: false,
+
 						callbacks: {
 							label: function (context) {
 								return "$" + context.parsed.y
 							},
 						},
+					},
+				},
+				elements: {
+					point: {
+						radius: 0,
+						hoverRadius: 4,
 					},
 				},
 			},
