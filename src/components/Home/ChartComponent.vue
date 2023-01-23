@@ -58,7 +58,6 @@ export default {
 						data: this.stats,
 						pointStyle: false,
 						backgroundColor: context => {
-							//create gradient
 							let gradient = context.chart.ctx.createLinearGradient(
 								0,
 								0,
@@ -70,7 +69,7 @@ export default {
 							return gradient
 						},
 						borderColor: "#7445FB",
-						pointBackgroundColor: "#7445FB",
+						usePointStyle: false,
 						fill: true,
 						tension: 0.3,
 					},
@@ -121,6 +120,15 @@ export default {
 				plugins: {
 					legend: {
 						display: false,
+					},
+					tooltip: {
+						usePointStyle: false,
+						displayColors: false,
+						callbacks: {
+							label: function (context) {
+								return "$" + context.parsed.y
+							},
+						},
 					},
 				},
 			},
