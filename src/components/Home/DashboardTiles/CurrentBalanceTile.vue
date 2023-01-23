@@ -23,25 +23,16 @@
 </template>
 <script>
 // import { mapActions } from "vuex"
-import { mapActions, mapGetters } from "vuex"
+import { mapGetters } from "vuex"
 import BackgroundTile from "../../UI/BackgroundTile.vue"
 export default {
 	name: "SummaryTile",
 	components: { BackgroundTile },
-	methods: {
-		...mapActions(["fetchData"]),
-	},
+
 	computed: {
 		...mapGetters({
 			balance: "getCurrentBalance",
-			getData: "getData",
 		}),
-	},
-	mounted() {
-		this.fetchData().then(() => {
-			console.log("data fetched")
-			console.log(">>>>>data:", this.getData)
-		})
 	},
 }
 </script>
