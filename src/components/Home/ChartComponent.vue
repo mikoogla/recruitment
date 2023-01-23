@@ -67,6 +67,12 @@ export default {
 				scales: {
 					y: {
 						beginAtZero: true,
+						ticks: {
+							callback: function (value) {
+								if (value < 1000) return value
+								return value / 1000 + "k"
+							},
+						},
 					},
 				},
 			},
