@@ -26,7 +26,7 @@
 				<v-progress-circular indeterminate color="#7445FB" />
 			</div>
 		</div>
-		<AccountInfo />
+		<AccountInfo id="account-info" />
 	</div>
 	<div class="expand">
 		<v-btn @click="isExpanded = !isExpanded">
@@ -62,6 +62,12 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "@/styles/imports.scss";
+#account-info {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
 hr {
 	border-top: 1px solid #9896a1;
 	opacity: 0.2;
