@@ -28,7 +28,13 @@ ChartJS.register(
 	Legend,
 	Filler
 )
-
+const randomStats = () => {
+	let arr = []
+	for (let i = 1; i <= 31; i++) {
+		arr.push(Math.floor(Math.random() * 2000 + 4000 + i * 200))
+	}
+	return arr
+}
 export default {
 	name: "App",
 	props: {
@@ -74,6 +80,12 @@ export default {
 						fill: true,
 						tension: 0.3,
 					},
+					{
+						data: randomStats(),
+						borderColor: "#858585",
+						borderDash: [6, 2],
+						tension: 0.3,
+					},
 				],
 			},
 
@@ -92,6 +104,9 @@ export default {
 							drawBorder: false,
 							drawOnChartArea: false,
 							drawTicks: false,
+						},
+						ticks: {
+							display: false,
 						},
 					},
 					y: {
