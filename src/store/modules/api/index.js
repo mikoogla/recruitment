@@ -8,6 +8,7 @@ export default {
 		return {
 			data: {},
 			historicalData: {},
+			isLoaded: false,
 		}
 	},
 	mutations: mutations,

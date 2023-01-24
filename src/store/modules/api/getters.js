@@ -5,4 +5,7 @@ export default {
 	getHistoricalData(state) {
 		return state.historicalData
 	},
+	getLoadingState(state) {
+		return state.isLoaded
+	},
 }

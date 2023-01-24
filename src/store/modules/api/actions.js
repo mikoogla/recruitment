@@ -17,4 +17,7 @@ export default {
 			console.log("error here:", err)
 		}
 	},
+	setLoadingState(context, data) {
+		context.commit("setLoadingState", data)
+	},
 }
