@@ -1,7 +1,8 @@
 <template>
 	<div class="info-item w-100">
 		<v-row no-gutters class="w-100">
-			<v-col cols="2">
+			<v-col cols="3" class="d-flex align-center">
+				<CustomImage :img-name="name" style="max-width: 3rem" class="mr-3" />
 				<div class="box d-flex flex-column w-25">
 					<div class="short">
 						{{ name }}
@@ -25,7 +26,7 @@
 					<div class="long">{{ percentchange }}%</div>
 				</div>
 			</v-col>
-			<v-col class="d-flex justify-space-between">
+			<v-col class="d-flex justify-space-between align-center">
 				<MiniChart :labels="history" :stats="history" />
 				<div class="buttons d-flex justify-end">
 					<CustomButton inverted>Sell</CustomButton>
@@ -37,6 +38,7 @@
 </template>
 <script>
 import CustomButton from "@/components/UI/CustomButton.vue"
+import CustomImage from "@/components/UI/CustomImage.vue"
 import { mapGetters } from "vuex"
 import fullNames from "./fullNames"
 import MiniChart from "./miniChart.vue"
@@ -75,7 +77,7 @@ export default {
 			translation => translation.name === self.name
 		).fullName
 	},
-	components: { CustomButton, MiniChart },
+	components: { CustomButton, MiniChart, CustomImage },
 }
 </script>
 <style lang="scss" scoped>
@@ -87,7 +89,7 @@ export default {
 	padding: 0.5rem 0;
 	background-color: #ffffff;
 	border: 1px solid #ebebf3;
-	padding: 1rem 2rem;
+	padding: 1rem;
 	border-radius: 0.5rem;
 	margin-bottom: 0.5rem;
 }

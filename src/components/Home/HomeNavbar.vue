@@ -2,10 +2,12 @@
 	<div class="nav-container">
 		<SearchBar />
 		<div class="icons-container">
-			<BackgroundTile :hover="true"
-				><span class="material-symbols-outlined">
-					notifications_active
-				</span></BackgroundTile
+			<v-badge dot color="#EA4D4D">
+				<BackgroundTile :hover="true"
+					><span class="material-symbols-outlined">
+						notifications_active
+					</span></BackgroundTile
+				></v-badge
 			>
 			<BackgroundTile :hover="true">
 				<span class="material-symbols-outlined"> menu </span>
