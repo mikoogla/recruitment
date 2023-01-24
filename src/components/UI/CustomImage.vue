@@ -33,5 +33,8 @@ export default {
 		height: 80%;
 		object-fit: contain;
 	}
+	&:hover {
+		cursor: pointer;
+	}
 }
 </style>
