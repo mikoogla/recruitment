@@ -1,5 +1,5 @@
 <template>
-	<div class="chart-size mx-10">
+	<div class="chart-size">
 		<Line :data="data" :options="options" />
 	</div>
 </template>
@@ -141,6 +141,9 @@ export default {
 
 <style scoped>
 .chart-size {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	max-height: 2rem;
 	max-width: 10rem;
 }

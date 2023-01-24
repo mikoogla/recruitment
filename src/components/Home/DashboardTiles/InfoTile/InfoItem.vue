@@ -4,7 +4,7 @@
 			<CustomImage
 				:img-name="name"
 				style="min-width: 3rem; width: 3rem"
-				class="mr-3"
+				class="image"
 			/>
 			<div class="box d-flex flex-column w-25">
 				<div class="short">
@@ -27,19 +27,23 @@
 					class="long"
 					:style="percentchange > 0 ? 'color: #2DC78F' : 'color: #EA4D4D'"
 				>
-					{{ percentchange }}%
+					{{ percentchange > 0 ? `+${percentchange}%` : `${percentchange}%` }}
+					<span class="material-symbols-outlined">
+						{{ percentchange > 0 ? "arrow_circle_up" : "arrow_circle_down" }}
+					</span>
 				</div>
 			</div>
 		</div>
 		<div class="segment c">
 			<MiniChart
+				id="mini-chart"
 				:line-color="percentchange > 0 ? '#2DC78F' : '#EA4D4D'"
 				:labels="history"
 				:stats="history"
 			/>
 			<div class="buttons">
 				<CustomButton inverted>Sell</CustomButton>
-				<CustomButton class="ml-2">Buy</CustomButton>
+				<CustomButton>Buy</CustomButton>
 			</div>
 		</div>
 	</div>
@@ -101,6 +105,9 @@ export default {
 	margin-bottom: 0.5rem;
 	overflow: hidden;
 }
+.image {
+	margin: 0 1rem 0 0;
+}
 .segment {
 	display: flex;
 	flex-direction: row;
@@ -123,12 +130,20 @@ export default {
 	}
 }
 .box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
 	& .short {
 		color: #9896a1;
 	}
 	& .long {
 		color: #0a041c;
 		font-weight: 600;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
 	}
 }
 .buttons {
@@ -136,8 +151,13 @@ export default {
 	flex-direction: row;
 	justify-content: flex-end;
 }
-
+.material-symbols-outlined {
+	font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
 @media (max-width: 1220px) {
+	.image {
+		margin: 0;
+	}
 	.info-item {
 		grid-template-rows: 1fr 1fr;
 		grid-template-columns: 1fr 1fr 1fr;
@@ -148,6 +168,7 @@ export default {
 		&.a {
 			display: flex;
 			justify-content: center;
+			flex-direction: column;
 			gap: 1rem;
 			grid-row-start: 1;
 			grid-column-start: 1;
@@ -158,6 +179,7 @@ export default {
 		&.b {
 			display: flex;
 			justify-content: center;
+			flex-direction: column;
 			gap: 1rem;
 			grid-row-start: 1;
 			grid-column-start: 2;
@@ -169,6 +191,7 @@ export default {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
+			align-items: space-between;
 			grid-row-start: 1;
 			grid-column-start: 3;
 
@@ -177,10 +200,21 @@ export default {
 		}
 	}
 	.buttons {
+		width: 100%;
 		margin-top: 1rem;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 1.5rem;
+	}
+	.box {
+		align-items: center;
 	}
 }
-
+@media (min-width: 700px) {
+	#mini-chart {
+		margin: 0 1rem;
+	}
+}
 @media (max-width: 700px) {
 	.info-item {
 		grid-template-rows: 1fr 1fr 1fr;
@@ -206,15 +240,20 @@ export default {
 		&.c {
 			justify-content: flex-start;
 			align-items: center;
-			&.buttons {
-				width: 100%;
-			}
+
 			grid-row-start: 3;
 			grid-column-start: 1;
 
 			grid-row-end: 4;
 			grid-column-end: 3;
 		}
+	}
+	.buttons {
+		width: 100%;
+		margin-top: 1rem;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
 	}
 }
 </style>
