@@ -1,24 +1,38 @@
 <template>
 	<div class="info-item w-100">
-		<div class="name d-flex flex-column w-25">
-			<div class="short">
-				{{ name }}
-			</div>
-			<div class="long">
-				{{ fullCurrencyName }}
-			</div>
-		</div>
-		<div class="price">Price: ${{ price }}</div>
-		<div class="price">
-			Change:
-			{{ percentchange }}
-			%
-		</div>
-		<MiniChart :labels="history" :stats="history" />
-		<div class="buttons d-flex">
-			<CustomButton inverted>Sell</CustomButton>
-			<CustomButton class="ml-2">Buy</CustomButton>
-		</div>
+		<v-row no-gutters class="w-100">
+			<v-col cols="2">
+				<div class="box d-flex flex-column w-25">
+					<div class="short">
+						{{ name }}
+					</div>
+					<div class="long">
+						{{ fullCurrencyName }}
+					</div>
+				</div>
+			</v-col>
+
+			<v-col cols="2">
+				<div class="box">
+					<div class="short">Price:</div>
+					<div class="long">${{ price }}</div>
+				</div>
+			</v-col>
+
+			<v-col cols="2">
+				<div class="box">
+					<div class="short">Change:</div>
+					<div class="long">{{ percentchange }}%</div>
+				</div>
+			</v-col>
+			<v-col class="d-flex justify-space-between">
+				<MiniChart :labels="history" :stats="history" />
+				<div class="buttons d-flex justify-end">
+					<CustomButton inverted>Sell</CustomButton>
+					<CustomButton class="ml-2">Buy</CustomButton>
+				</div>
+			</v-col>
+		</v-row>
 	</div>
 </template>
 <script>
@@ -77,7 +91,7 @@ export default {
 	border-radius: 0.5rem;
 	margin-bottom: 0.5rem;
 }
-.name {
+.box {
 	& .short {
 		color: #9896a1;
 	}
