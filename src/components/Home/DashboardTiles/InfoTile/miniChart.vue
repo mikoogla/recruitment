@@ -65,6 +65,13 @@ export default {
 						usePointStyle: false,
 						tension: 0.3,
 						borderWidth: 2,
+						backgroundColor: context => {
+							let gradient = context.chart.ctx.createLinearGradient(0, 0, 0, 20)
+							gradient.addColorStop(0, this.lineColor + "80")
+							gradient.addColorStop(1, "rgba(255,255,255, 0)")
+							return gradient
+						},
+						fill: true,
 					},
 				],
 			},
