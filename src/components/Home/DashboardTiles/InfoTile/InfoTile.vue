@@ -1,3 +1,18 @@
+<script setup>
+import BackgroundTile from "../../../UI/BackgroundTile.vue"
+import InfoItem from "./InfoItem.vue"
+import InfoTabs from "./InfoTabs.vue"
+import { useStore } from "vuex"
+import { computed, onMounted } from "vue"
+
+const store = useStore()
+const getLoadingState = computed(() => store.getters.getLoadingState)
+onMounted(async () => {
+	await store.dispatch("fetchData")
+	await store.dispatch("fetchHistory")
+	store.commit("setLoadingState", true)
+})
+</script>
 <template>
 	<BackgroundTile v-if="getLoadingState" radius="1rem" id="info-container"
 		><InfoTabs />
@@ -16,30 +31,6 @@
 		<v-progress-circular class="ma-5" indeterminate color="#7445FB"
 	/></BackgroundTile>
 </template>
-<script>
-import BackgroundTile from "../../../UI/BackgroundTile.vue"
-import InfoItem from "./InfoItem.vue"
-import InfoTabs from "./InfoTabs.vue"
-import { mapActions, mapGetters } from "vuex"
-export default {
-	data() {
-		return {}
-	},
-	name: "SummaryTile",
-	components: { BackgroundTile, InfoTabs, InfoItem },
-	methods: {
-		...mapActions(["fetchData", "fetchHistory", "setLoadingState"]),
-	},
-	computed: {
-		...mapGetters(["getData", "getLoadingState"]),
-	},
-	async mounted() {
-		await this.fetchData()
-		await this.fetchHistory()
-		this.setLoadingState(true)
-	},
-}
-</script>
 <style lang="scss" scoped>
 #info-container {
 	display: flex;

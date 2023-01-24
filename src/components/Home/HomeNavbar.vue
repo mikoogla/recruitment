@@ -13,30 +13,21 @@
 				<span class="material-symbols-outlined"> menu </span>
 			</BackgroundTile>
 		</div>
-		<MenuComponent v-if="menuVisible" @qwe="closeMenu" />
+		<MenuComponent v-if="menuVisible" @closeMenuEmit="closeMenu" />
 	</div>
 </template>
-<script>
+<script setup>
 import MenuComponent from "../MenuComponent.vue"
 import BackgroundTile from "../UI/BackgroundTile.vue"
 import SearchBar from "../UI/SearchBar.vue"
-export default {
-	name: "HomeNavbar",
-	components: { SearchBar, BackgroundTile, MenuComponent },
-	emits: ["qwe"],
-	data() {
-		return {
-			menuVisible: false,
-		}
-	},
-	methods: {
-		closeMenu() {
-			this.menuVisible = false
-		},
-		openMenu() {
-			this.menuVisible = true
-		},
-	},
+import { defineEmits, ref } from "vue"
+defineEmits(["closeMenuEmit"])
+const menuVisible = ref(false)
+function closeMenu() {
+	menuVisible.value = false
+}
+function openMenu() {
+	menuVisible.value = true
 }
 </script>
 <style scoped lang="scss">

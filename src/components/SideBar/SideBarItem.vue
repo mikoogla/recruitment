@@ -12,30 +12,27 @@
 		</div>
 	</div>
 </template>
-<script>
-export default {
-	name: "SideBarItem",
-	props: {
-		selected: {
-			type: Boolean,
-			default: false,
-		},
-		icon: {
-			type: String,
-			default: "home",
-		},
-		text: {
-			type: String,
-			default: "Item",
-		},
-		notifications: {
-			type: Number,
-			default: 0,
-		},
+<script setup>
+import { defineProps } from "vue"
+defineProps({
+	selected: {
+		type: Boolean,
+		default: false,
 	},
-}
+	icon: {
+		type: String,
+		default: "home",
+	},
+	text: {
+		type: String,
+		default: "Item",
+	},
+	notifications: {
+		type: Number,
+		default: 0,
+	},
+})
 </script>
-
 <style scoped lang="scss">
 .item {
 	font-weight: 400;

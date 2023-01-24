@@ -1,5 +1,12 @@
 import SideBarItem from './SideBar/SideBarItem.vue';
-
+<script setup>
+import { defineEmits } from "vue"
+import SideBarItem from "./SideBar/SideBarItem.vue"
+const emit = defineEmits(["closeMenuEmit"])
+function close() {
+	emit("closeMenuEmit")
+}
+</script>
 <template>
 	<div class="menu-container">
 		<span @click="close" class="material-symbols-outlined"> close </span>
@@ -14,18 +21,6 @@ import SideBarItem from './SideBar/SideBarItem.vue';
 		<SideBarItem selected text="Log Out" icon="logout" class="menu-item" />
 	</div>
 </template>
-<script>
-import SideBarItem from "./SideBar/SideBarItem.vue"
-export default {
-	name: "MenuComponent",
-	components: { SideBarItem },
-	methods: {
-		close() {
-			this.$emit("qwe")
-		},
-	},
-}
-</script>
 <style scoped lang="scss">
 .menu-container {
 	position: absolute;

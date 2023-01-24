@@ -1,4 +1,6 @@
-import BackgroundTile from './BackgroundTile.vue';
+<script setup>
+import BackgroundTile from "./BackgroundTile.vue"
+</script>
 
 <template>
 	<div class="search-container">
@@ -8,14 +10,6 @@ import BackgroundTile from './BackgroundTile.vue';
 		</BackgroundTile>
 	</div>
 </template>
-
-<script>
-import BackgroundTile from "./BackgroundTile.vue"
-export default {
-	name: "SearchBar",
-	components: { BackgroundTile },
-}
-</script>
 
 <style scoped lang="scss">
 .search-container {

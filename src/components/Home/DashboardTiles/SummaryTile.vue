@@ -1,3 +1,25 @@
+<script setup>
+import BackgroundTile from "../../UI/BackgroundTile.vue"
+import ChartComponent from "../ChartComponent.vue"
+import { ref } from "vue"
+const monthArray = () => {
+	let arr = []
+	for (let i = 1; i <= 31; i++) {
+		arr.push(i + " May")
+	}
+	return arr
+}
+const randomStats = () => {
+	let arr = []
+	for (let i = 1; i <= 31; i++) {
+		arr.push(Math.floor(Math.random() * 5000 + 5000 + i * 400))
+	}
+	return arr
+}
+const labels = ref(monthArray())
+const chartName = ref("default name")
+const stats = ref(randomStats())
+</script>
 <template>
 	<BackgroundTile radius="1rem" id="summary"
 		><div class="title w-100 text-start">
@@ -23,39 +45,7 @@
 		</div>
 	</BackgroundTile>
 </template>
-<script>
-import BackgroundTile from "../../UI/BackgroundTile.vue"
-import ChartComponent from "../ChartComponent.vue"
 
-const monthArray = () => {
-	let arr = []
-	for (let i = 1; i <= 31; i++) {
-		arr.push(i + " May")
-	}
-	return arr
-}
-
-const randomStats = () => {
-	let arr = []
-	for (let i = 1; i <= 31; i++) {
-		arr.push(Math.floor(Math.random() * 5000 + 5000 + i * 400))
-	}
-	return arr
-}
-
-export default {
-	data() {
-		return {
-			//create array from 1 May to 31 May
-			labels: monthArray(),
-			chartName: "default name",
-			stats: randomStats(),
-		}
-	},
-	name: "SummaryTile",
-	components: { BackgroundTile, ChartComponent },
-}
-</script>
 <style lang="scss" scoped>
 #summary {
 	display: flex;

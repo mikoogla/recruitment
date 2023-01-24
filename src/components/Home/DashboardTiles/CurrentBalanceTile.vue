@@ -1,3 +1,12 @@
+<script setup>
+import CustomButton from "@/components/UI/CustomButton.vue"
+import BackgroundTile from "../../UI/BackgroundTile.vue"
+import { useStore } from "vuex"
+import { computed } from "vue"
+
+const store = useStore()
+const balance = computed(() => store.getters.getCurrentBalance)
+</script>
 <template>
 	<BackgroundTile radius="1rem" id="current-balance"
 		><div class="title w-100 text-start">
@@ -19,22 +28,6 @@
 		</div>
 	</BackgroundTile>
 </template>
-<script>
-// import { mapActions } from "vuex"
-import CustomButton from "@/components/UI/CustomButton.vue"
-import { mapGetters } from "vuex"
-import BackgroundTile from "../../UI/BackgroundTile.vue"
-export default {
-	name: "SummaryTile",
-	components: { BackgroundTile, CustomButton },
-
-	computed: {
-		...mapGetters({
-			balance: "getCurrentBalance",
-		}),
-	},
-}
-</script>
 <style lang="scss" scoped>
 #current-balance {
 	display: flex;

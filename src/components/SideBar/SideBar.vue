@@ -1,3 +1,20 @@
+<script setup>
+import SideBarItem from "./SideBarItem.vue"
+import FavoriteItem from "./FavoriteItem.vue"
+import AccountInfo from "./AccountInfo.vue"
+
+import SideBarItemsData from "./sidebarItemsData"
+import { useStore } from "vuex"
+import { ref, computed } from "vue"
+
+const store = useStore()
+
+const isExpanded = ref(false)
+const sidebarItems = computed(() => SideBarItemsData)
+const favorites = ref(["BTC", "XRP"])
+const loadingState = computed(() => store.getters.getLoadingState)
+</script>
+
 <template>
 	<div
 		v-show="isExpanded || $vuetify.display.width > 968"
@@ -22,7 +39,7 @@
 				Favorites
 				<span class="material-symbols-outlined"> more_horiz </span>
 			</div>
-			<div v-if="getLoadingState" class="items-list my-5">
+			<div v-if="loadingState" class="items-list my-5">
 				<FavoriteItem v-for="it in favorites" :name="it" :key="it" />
 			</div>
 			<div v-else class="loading w-100">
@@ -40,29 +57,6 @@
 		</v-btn>
 	</div>
 </template>
-<script>
-import SideBarItem from "./SideBarItem.vue"
-import SideBarItemsData from "./sidebarItemsData"
-import FavoriteItem from "./FavoriteItem.vue"
-import { mapGetters } from "vuex"
-import AccountInfo from "./AccountInfo.vue"
-
-export default {
-	name: "SideBar",
-	data: () => ({
-		isExpanded: false,
-		sidebarItems: [],
-		favorites: ["BTC", "XRP"],
-	}),
-	components: { SideBarItem, FavoriteItem, AccountInfo },
-	computed: {
-		...mapGetters(["getLoadingState"]),
-	},
-	mounted() {
-		this.sidebarItems = SideBarItemsData
-	},
-}
-</script>
 <style scoped lang="scss">
 @import "@/styles/imports.scss";
 #account-info {

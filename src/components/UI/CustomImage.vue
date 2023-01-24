@@ -1,3 +1,13 @@
+<script setup>
+import { defineProps } from "vue"
+defineProps({
+	imgName: {
+		type: String,
+		required: true,
+		default: "BTC",
+	},
+})
+</script>
 <template>
 	<div class="image-container">
 		<img
@@ -7,18 +17,6 @@
 		/>
 	</div>
 </template>
-<script>
-export default {
-	name: "CustomImage",
-	props: {
-		imgName: {
-			type: String,
-			required: true,
-			default: "BTC",
-		},
-	},
-}
-</script>
 <style scoped lang="scss">
 .image-container {
 	width: 100%;

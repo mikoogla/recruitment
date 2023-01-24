@@ -20,44 +20,39 @@
 		</div>
 	</div>
 </template>
-
-<script>
+<script setup>
 import CustomImage from "@/components/UI/CustomImage.vue"
-import fullNames from "@/components/Home/DashboardTiles/InfoTile/fullNames"
 import MiniChart from "../Home/DashboardTiles/InfoTile/miniChart.vue"
-import { mapGetters } from "vuex"
-export default {
-	name: "FavoriteItem",
-	props: {
-		name: {
-			type: String,
-			required: true,
-			default: "BTC",
-		},
+import fullNames from "@/components/Home/DashboardTiles/InfoTile/fullNames"
+import { useStore } from "vuex"
+import { ref, computed, onBeforeMount, defineProps } from "vue"
+const props = defineProps({
+	name: {
+		type: String,
+		required: true,
+		default: "BTC",
 	},
-	data() {
-		return {
-			fullCurrencyName: "",
-			history: [],
-			percentchange: 0,
-		}
-	},
-	computed: {
-		...mapGetters(["getData", "getLoadingState", "getHistoricalData"]),
-	},
-	beforeMount() {
-		let self = this
-		this.fullCurrencyName = fullNames.find(
-			translation => translation.name === self.name
-		).fullName
-		this.percentchange =
-			self.getData[self.name][0].quote["USD"].percent_change_24h.toFixed(2)
-		this.history = self.getHistoricalData[self.name].quotes.map(quote =>
-			quote.quote.USD.price.toFixed(2)
-		)
-	},
-	components: { CustomImage, MiniChart },
-}
+})
+const store = useStore()
+
+const fullCurrencyName = ref("")
+const history = ref([])
+const percentchange = ref(0)
+
+const getData = computed(() => store.getters.getData)
+const getHistoricalData = computed(() => store.getters.getHistoricalData)
+// const getLoadingState = computed(() => store.getters.getLoadingState)
+
+onBeforeMount(() => {
+	fullCurrencyName.value = fullNames.find(
+		translation => translation.name === props.name
+	).fullName
+	percentchange.value =
+		getData.value[props.name][0].quote["USD"].percent_change_24h.toFixed(2)
+	history.value = getHistoricalData.value[props.name].quotes.map(quote =>
+		quote.quote.USD.price.toFixed(2)
+	)
+})
 </script>
 <style lang="scss" scoped>
 .item-container {

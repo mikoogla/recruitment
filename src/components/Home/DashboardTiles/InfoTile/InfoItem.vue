@@ -1,3 +1,41 @@
+<script setup>
+import CustomButton from "@/components/UI/CustomButton.vue"
+import CustomImage from "@/components/UI/CustomImage.vue"
+import MiniChart from "./miniChart.vue"
+import fullNames from "./fullNames"
+import { useStore } from "vuex"
+import { ref, computed, onBeforeMount, defineProps } from "vue"
+
+const store = useStore()
+const history = ref([])
+const price = ref((0).toLocaleString("en-US"))
+const percentchange = ref(0)
+const fullCurrencyName = ref("")
+
+const getData = computed(() => store.getters.getData)
+const getHistoricalData = computed(() => store.getters.getHistoricalData)
+
+const props = defineProps({
+	name: {
+		type: String,
+		required: true,
+		default: "BTC",
+	},
+})
+
+onBeforeMount(() => {
+	fullCurrencyName.value = fullNames.find(
+		translation => translation.name === props.name
+	).fullName
+	percentchange.value =
+		getData.value[props.name][0].quote["USD"].percent_change_24h.toFixed(2)
+	price.value = getData.value[props.name][0].quote["USD"].price.toFixed(2)
+	history.value = getHistoricalData.value[props.name].quotes.map(quote =>
+		quote.quote.USD.price.toFixed(2)
+	)
+})
+</script>
+
 <template>
 	<div class="info-item w-100">
 		<div class="segment a">
@@ -48,49 +86,7 @@
 		</div>
 	</div>
 </template>
-<script>
-import CustomButton from "@/components/UI/CustomButton.vue"
-import CustomImage from "@/components/UI/CustomImage.vue"
-import { mapGetters } from "vuex"
-import fullNames from "./fullNames"
-import MiniChart from "./miniChart.vue"
 
-export default {
-	name: "InfoItem",
-	data() {
-		return {
-			history: [],
-			price: (0).toLocaleString("en-US"),
-			percentchange: 0,
-			fullCurrencyName: "",
-		}
-	},
-	props: {
-		name: {
-			type: String,
-			required: true,
-		},
-	},
-	computed: {
-		...mapGetters(["getData", "getHistoricalData"]),
-	},
-	async beforeMount() {
-		let self = this
-		this.history = self.getHistoricalData[self.name].quotes.map(quote =>
-			quote.quote.USD.price.toFixed(2)
-		)
-		this.price =
-			self.getData[self.name][0].quote["USD"].price.toLocaleString("en-US")
-
-		this.percentchange =
-			self.getData[self.name][0].quote["USD"].percent_change_24h.toFixed(2)
-		this.fullCurrencyName = fullNames.find(
-			translation => translation.name === self.name
-		).fullName
-	},
-	components: { CustomButton, MiniChart, CustomImage },
-}
-</script>
 <style lang="scss" scoped>
 .info-item {
 	display: grid;

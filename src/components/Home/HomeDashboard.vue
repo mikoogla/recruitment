@@ -1,3 +1,8 @@
+<script setup>
+import CurrentBalanceTile from "./DashboardTiles/CurrentBalanceTile.vue"
+import SummaryTile from "./DashboardTiles/SummaryTile.vue"
+import InfoTile from "./DashboardTiles/InfoTile/InfoTile.vue"
+</script>
 <template>
 	<div class="dashboard-container mt-10">
 		<CurrentBalanceTile class="single-grid one" />
@@ -6,17 +11,6 @@
 		<SummaryTile v-if="$vuetify.display.width <= 968" class="single-grid two" />
 	</div>
 </template>
-<script>
-import CurrentBalanceTile from "./DashboardTiles/CurrentBalanceTile.vue"
-import SummaryTile from "./DashboardTiles/SummaryTile.vue"
-import InfoTile from "./DashboardTiles/InfoTile/InfoTile.vue"
-
-export default {
-	name: "MenuComponent",
-	components: { CurrentBalanceTile, SummaryTile, InfoTile },
-}
-</script>
-
 <style scoped lang="scss">
 .dashboard-container {
 	gap: 1rem;

@@ -1,3 +1,7 @@
+<script setup>
+import SideBar from "./components/SideBar/SideBar.vue"
+</script>
+
 <template>
 	<v-app
 		theme="light"
@@ -10,18 +14,6 @@
 		</div>
 	</v-app>
 </template>
-
-<script>
-import SideBar from "./components/SideBar/SideBar.vue"
-
-export default {
-	name: "App",
-	data: () => ({
-		//
-	}),
-	components: { SideBar },
-}
-</script>
 <style scoped lang="scss">
 @import "@/styles/imports.scss";
 .div {
