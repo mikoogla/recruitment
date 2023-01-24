@@ -3,7 +3,7 @@
 		><InfoTabs />
 		<hr class="mb-6" />
 		<InfoItem
-			v-for="currencyName in Object.keys(getData)"
+			v-for="currencyName in ['BTC', 'ETH', 'ADA', 'AVAX', 'XRP']"
 			:key="currencyName"
 			:name="currencyName"
 		/>
