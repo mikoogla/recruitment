@@ -5,25 +5,16 @@
 				{{ name }}
 			</div>
 			<div class="long">
-				{{ translate.find(translation => translation.name === name).fullName }}
+				{{ fullCurrencyName }}
 			</div>
 		</div>
-		<div class="price">
-			Price: ${{ getData[name][0].quote["USD"].price.toFixed(2) }}
-		</div>
+		<div class="price">Price: ${{ price }}</div>
 		<div class="price">
 			Change:
-			{{ getData[name][0].quote["USD"].percent_change_24h.toFixed(2) }}
+			{{ percentchange }}
 			%
 		</div>
-		<div class="price">
-			History:
-			{{
-				getHistoricalData[name].quotes.map(quote =>
-					quote.quote.USD.price.toFixed(2)
-				)
-			}}
-		</div>
+		<MiniChart :labels="history" :stats="history" />
 		<div class="buttons d-flex">
 			<CustomButton inverted>Sell</CustomButton>
 			<CustomButton class="ml-2">Buy</CustomButton>
@@ -34,12 +25,16 @@
 import CustomButton from "@/components/UI/CustomButton.vue"
 import { mapGetters } from "vuex"
 import fullNames from "./fullNames"
+import MiniChart from "./miniChart.vue"
 
 export default {
 	name: "InfoItem",
 	data() {
 		return {
-			translate: [],
+			history: [],
+			price: (0).toLocaleString("en-US").replace(",", " "),
+			percentchange: 0,
+			fullCurrencyName: "",
 		}
 	},
 	props: {
@@ -51,10 +46,22 @@ export default {
 	computed: {
 		...mapGetters(["getData", "getHistoricalData"]),
 	},
-	beforeMount() {
-		this.translate = fullNames
+	async beforeMount() {
+		let self = this
+		console.log("name ", self.name)
+		this.history = self.getHistoricalData[self.name].quotes.map(quote =>
+			quote.quote.USD.price.toFixed(2)
+		)
+		this.price = self.getData[self.name][0].quote["USD"].price
+			.toLocaleString("en-US")
+			.replace(",", " ")
+		this.percentchange =
+			self.getData[self.name][0].quote["USD"].percent_change_24h.toFixed(2)
+		this.fullCurrencyName = fullNames.find(
+			translation => translation.name === self.name
+		).fullName
 	},
-	components: { CustomButton },
+	components: { CustomButton, MiniChart },
 }
 </script>
 <style lang="scss" scoped>
