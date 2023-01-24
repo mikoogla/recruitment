@@ -1,13 +1,19 @@
 <template>
-	<BackgroundTile radius="1rem" id="info-container"
+	<BackgroundTile v-if="dataLoaded" radius="1rem" id="info-container"
 		><InfoTabs />
 		<hr class="mb-6" />
 		<InfoItem
-			v-for="currencyName in ['BTC', 'ETH', 'ADA', 'AVAX', 'XRP']"
+			v-for="currencyName in Object.keys(getData)"
 			:key="currencyName"
 			:name="currencyName"
 		/>
 	</BackgroundTile>
+	<BackgroundTile
+		v-else
+		radius="1rem"
+		class="d-flex justify-center align-center pa-10"
+		><h2>Loading...</h2></BackgroundTile
+	>
 </template>
 <script>
 import BackgroundTile from "../../../UI/BackgroundTile.vue"
@@ -16,7 +22,9 @@ import InfoTabs from "./InfoTabs.vue"
 import { mapActions, mapGetters } from "vuex"
 export default {
 	data() {
-		return {}
+		return {
+			dataLoaded: false,
+		}
 	},
 	name: "SummaryTile",
 	components: { BackgroundTile, InfoTabs, InfoItem },
@@ -26,9 +34,10 @@ export default {
 	computed: {
 		...mapGetters(["getData"]),
 	},
-	mounted() {
-		this.fetchData()
-		this.fetchHistory()
+	async mounted() {
+		await this.fetchData()
+		await this.fetchHistory()
+		this.dataLoaded = true
 	},
 }
 </script>
