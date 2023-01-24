@@ -29,7 +29,7 @@ export default defineComponent({
 	overflow-y: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
 	.home-container {
 		margin-left: 0;
 		padding: 3rem 1rem;

@@ -41,6 +41,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	padding: 1rem 2rem 2rem 2rem;
+	overflow: hidden;
 }
 .title {
 	width: 100%;
@@ -61,6 +62,7 @@ export default {
 	align-items: center;
 	font-size: 3.2rem;
 	font-weight: 500;
+	white-space: nowrap;
 	& p {
 		color: #9896a1;
 		font-weight: 400;

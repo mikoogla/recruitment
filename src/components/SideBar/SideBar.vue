@@ -1,6 +1,6 @@
 <template>
 	<div
-		v-show="isExpanded || $vuetify.display.width > 768"
+		v-show="isExpanded || $vuetify.display.width > 968"
 		class="sidebar-container"
 	>
 		<div class="logo-position">
@@ -129,7 +129,7 @@ hr {
 	gap: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
 	.sidebar-container {
 		position: absolute;
 		bottom: 0;

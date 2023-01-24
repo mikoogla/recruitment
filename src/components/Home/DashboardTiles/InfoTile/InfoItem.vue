@@ -1,7 +1,11 @@
 <template>
 	<div class="info-item w-100">
-		<div class="segment start">
-			<CustomImage :img-name="name" style="max-width: 3rem" class="mr-3" />
+		<div class="segment a">
+			<CustomImage
+				:img-name="name"
+				style="min-width: 3rem; width: 3rem"
+				class="mr-3"
+			/>
 			<div class="box d-flex flex-column w-25">
 				<div class="short">
 					{{ name }}
@@ -10,13 +14,13 @@
 					{{ fullCurrencyName }}
 				</div>
 			</div>
-
+		</div>
+		<div class="segment b">
 			<div class="box">
 				<div class="short">Price:</div>
 				<div class="long">${{ price }}</div>
 			</div>
-		</div>
-		<div class="segment end">
+
 			<div class="box">
 				<div class="short">Change:</div>
 				<div
@@ -26,7 +30,8 @@
 					{{ percentchange }}%
 				</div>
 			</div>
-
+		</div>
+		<div class="segment c">
 			<MiniChart
 				:line-color="percentchange > 0 ? '#2DC78F' : '#EA4D4D'"
 				:labels="history"
@@ -86,7 +91,7 @@ export default {
 <style lang="scss" scoped>
 .info-item {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
 	align-items: center;
 	gap: 2rem;
 	padding: 0.5rem 0;
@@ -95,13 +100,24 @@ export default {
 	padding: 1rem;
 	border-radius: 0.5rem;
 	margin-bottom: 0.5rem;
+	overflow: hidden;
 }
 .segment {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
-	gap: 1rem;
+	flex-wrap: nowrap;
+
+	&.a {
+		justify-content: flex-start;
+	}
+	&.b {
+		justify-content: space-between;
+	}
+	&.c {
+		justify-content: space-between;
+	}
 }
 .box {
 	& .short {
@@ -120,18 +136,39 @@ export default {
 
 @media (max-width: 1220px) {
 	.info-item {
-		grid-template-columns: 1fr;
-		gap: 1rem;
+		grid-template-rows: 1fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 	.segment {
-		justify-content: start;
+		display: grid;
+		&.a {
+			grid-row-start: 1;
+			grid-column-start: 1;
+
+			grid-row-end: 3;
+			grid-column-end: 2;
+		}
+		&.b {
+			grid-row-start: 1;
+			grid-column-start: 2;
+
+			grid-row-end: 3;
+			grid-column-end: 3;
+		}
+		&.c {
+			grid-row-start: 1;
+			grid-column-start: 3;
+
+			grid-row-end: 3;
+			grid-column-end: 4;
+		}
 	}
 	.buttons {
 		margin-top: 1rem;
 	}
 }
 
-@media (max-width: 968px) {
+/* @media (max-width: 968px) {
 	.info-item {
 		display: flex;
 		flex-direction: column;
@@ -153,5 +190,5 @@ export default {
 		width: 100%;
 		justify-content: space-between;
 	}
-}
+} */
 </style>

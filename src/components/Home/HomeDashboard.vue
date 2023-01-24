@@ -20,24 +20,17 @@ export default {
 .dashboard-container {
 	gap: 1rem;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	grid-gap: 2rem;
 }
 .single-grid {
 	height: 336px;
 	&.one {
-		grid-row-start: 1;
-		grid-column-start: 1;
-
-		grid-row-end: 2;
-		grid-column-end: 2;
+		grid-column: 1fr;
+		min-width: 100%;
 	}
 	&.two {
-		grid-row-start: 1;
-		grid-column-start: 2;
-
-		grid-row-end: 2;
-		grid-column-end: 3;
+		grid-column: 1fr;
 	}
 }
 .double-grid {
@@ -48,10 +41,15 @@ export default {
 	grid-column-end: 3;
 }
 
-@media (max-width: 1220px) {
+@media (max-width: 968px) {
 	.dashboard-container {
 		display: flex;
 		flex-direction: column;
+	}
+}
+@media (min-width: 968px) {
+	.dashboard-container {
+		display: grid;
 	}
 }
 </style>
