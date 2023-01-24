@@ -76,7 +76,6 @@ export default {
 	},
 	async beforeMount() {
 		let self = this
-		console.log("name ", self.name)
 		this.history = self.getHistoricalData[self.name].quotes.map(quote =>
 			quote.quote.USD.price.toFixed(2)
 		)
@@ -150,6 +149,7 @@ export default {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
+	gap: 1rem;
 }
 .material-symbols-outlined {
 	font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
@@ -202,9 +202,9 @@ export default {
 	.buttons {
 		width: 100%;
 		margin-top: 1rem;
-		justify-content: space-between;
+		justify-content: flex-end;
 		align-items: center;
-		padding: 0 1.5rem;
+		padding: 0 2rem;
 	}
 	.box {
 		align-items: center;

@@ -17,9 +17,6 @@ export default {
 			default: "BTC",
 		},
 	},
-	mounted() {
-		console.log("my image name = " + this.imgName)
-	},
 }
 </script>
 <style scoped lang="scss">

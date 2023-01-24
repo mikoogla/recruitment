@@ -32,7 +32,6 @@ const monthArray = () => {
 	for (let i = 1; i <= 31; i++) {
 		arr.push(i + " May")
 	}
-	console.log("array" + arr)
 	return arr
 }
 

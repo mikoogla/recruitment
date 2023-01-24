@@ -46,7 +46,6 @@ export default {
 		...mapGetters(["getData", "getLoadingState", "getHistoricalData"]),
 	},
 	beforeMount() {
-		console.log("name prop:_" + this.name + "_")
 		let self = this
 		this.fullCurrencyName = fullNames.find(
 			translation => translation.name === self.name
@@ -86,11 +85,12 @@ export default {
 	align-items: center;
 	justify-content: space-between;
 	height: 3rem;
-	width: 5rem;
+	width: 6rem;
 }
 #chart-size {
-	min-height: 100%;
-	min-width: 100%;
+	margin: 0 1rem;
+	max-height: 100%;
+	max-width: 100%;
 }
 .item-container {
 	max-width: 264px;

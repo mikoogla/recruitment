@@ -9,18 +9,34 @@
 					</span></BackgroundTile
 				></v-badge
 			>
-			<BackgroundTile :hover="true">
+			<BackgroundTile :hover="true" @click="openMenu()">
 				<span class="material-symbols-outlined"> menu </span>
 			</BackgroundTile>
 		</div>
+		<MenuComponent v-if="menuVisible" @qwe="closeMenu" />
 	</div>
 </template>
 <script>
+import MenuComponent from "../MenuComponent.vue"
 import BackgroundTile from "../UI/BackgroundTile.vue"
 import SearchBar from "../UI/SearchBar.vue"
 export default {
 	name: "HomeNavbar",
-	components: { SearchBar, BackgroundTile },
+	components: { SearchBar, BackgroundTile, MenuComponent },
+	emits: ["qwe"],
+	data() {
+		return {
+			menuVisible: false,
+		}
+	},
+	methods: {
+		closeMenu() {
+			this.menuVisible = false
+		},
+		openMenu() {
+			this.menuVisible = true
+		},
+	},
 }
 </script>
 <style scoped lang="scss">
