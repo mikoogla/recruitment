@@ -64,7 +64,7 @@ export default {
 	cursor: pointer;
 	&.active {
 		color: #000000;
-		font-weight: 500;
+		font-weight: 600;
 		padding-bottom: 0.5rem;
 		border-bottom: 4px solid #7445fb;
 	}

@@ -48,7 +48,7 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	h2 {
-		font-weight: 500;
+		font-weight: 600;
 	}
 	padding: 1rem 0;
 	& .material-symbols-outlined {
@@ -61,7 +61,7 @@ export default {
 	display: flex;
 	align-items: center;
 	font-size: 3.2rem;
-	font-weight: 500;
+	font-weight: 600;
 	white-space: nowrap;
 	& p {
 		color: #9896a1;
@@ -72,8 +72,8 @@ export default {
 	display: flex;
 	align-items: center;
 	color: #2dc78f;
+	font-weight: 600;
 	& p {
-		font-weight: 400;
 		margin: 0 0.5rem;
 	}
 	& .material-symbols-outlined {

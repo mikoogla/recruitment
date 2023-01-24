@@ -76,8 +76,9 @@ hr {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	h2 {
-		font-weight: 500;
+		font-weight: 600;
 	}
 	padding: 1rem;
 	& .material-symbols-outlined {

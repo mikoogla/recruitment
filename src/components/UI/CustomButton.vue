@@ -35,7 +35,7 @@ export default {
 	padding: 0.5rem 1rem;
 	cursor: pointer;
 	border: 1px solid #ebebf3;
-	font-weight: 500;
+	font-weight: 600;
 
 	&:hover {
 		filter: brightness(0.9);
