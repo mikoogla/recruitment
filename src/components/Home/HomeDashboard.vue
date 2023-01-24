@@ -1,8 +1,9 @@
 <template>
 	<div class="dashboard-container mt-10">
 		<CurrentBalanceTile class="single-grid one" />
-		<SummaryTile class="single-grid two" />
+		<SummaryTile v-if="$vuetify.display.width > 968" class="single-grid two" />
 		<InfoTile class="double-grid" />
+		<SummaryTile v-if="$vuetify.display.width <= 968" class="single-grid two" />
 	</div>
 </template>
 <script>

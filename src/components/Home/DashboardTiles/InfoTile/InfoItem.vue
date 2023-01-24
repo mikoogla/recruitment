@@ -93,7 +93,6 @@ export default {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	align-items: center;
-	gap: 2rem;
 	padding: 0.5rem 0;
 	background-color: #ffffff;
 	border: 1px solid #ebebf3;
@@ -116,7 +115,11 @@ export default {
 		justify-content: space-between;
 	}
 	&.c {
-		justify-content: space-between;
+		justify-content: flex-start;
+		align-items: end;
+		&.buttons {
+			width: 100%;
+		}
 	}
 }
 .box {
@@ -141,7 +144,11 @@ export default {
 	}
 	.segment {
 		display: grid;
+		text-align: center;
 		&.a {
+			display: flex;
+			justify-content: center;
+			gap: 1rem;
 			grid-row-start: 1;
 			grid-column-start: 1;
 
@@ -149,6 +156,9 @@ export default {
 			grid-column-end: 2;
 		}
 		&.b {
+			display: flex;
+			justify-content: center;
+			gap: 1rem;
 			grid-row-start: 1;
 			grid-column-start: 2;
 
@@ -156,6 +166,9 @@ export default {
 			grid-column-end: 3;
 		}
 		&.c {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
 			grid-row-start: 1;
 			grid-column-start: 3;
 
@@ -168,27 +181,40 @@ export default {
 	}
 }
 
-/* @media (max-width: 968px) {
+@media (max-width: 700px) {
 	.info-item {
-		display: flex;
-		flex-direction: column;
-	}
-	.segment.end {
-		display: grid;
+		grid-template-rows: 1fr 1fr 1fr;
 		grid-template-columns: 1fr 1fr;
+		gap: 0;
+	}
+	.segment {
+		display: grid;
+		&.a {
+			grid-row-start: 1;
+			grid-column-start: 1;
 
-		& .buttons {
+			grid-row-end: 2;
+			grid-column-end: 3;
+		}
+		&.b {
 			grid-row-start: 2;
 			grid-column-start: 1;
 
 			grid-row-end: 3;
 			grid-column-end: 3;
-			justify-content: center;
+		}
+		&.c {
+			justify-content: flex-start;
+			align-items: center;
+			&.buttons {
+				width: 100%;
+			}
+			grid-row-start: 3;
+			grid-column-start: 1;
+
+			grid-row-end: 4;
+			grid-column-end: 3;
 		}
 	}
-	.segment {
-		width: 100%;
-		justify-content: space-between;
-	}
-} */
+}
 </style>

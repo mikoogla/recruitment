@@ -90,7 +90,7 @@ hr {
 .expand {
 	visibility: hidden;
 	position: absolute;
-	left: 0;
+	left: 0.5rem;
 	top: 0.5rem;
 	color: #fff;
 	z-index: 2;
