@@ -44,6 +44,10 @@ export default {
 			type: Array,
 			required: true,
 		},
+		lineColor: {
+			required: false,
+			default: "#7445FB",
+		},
 	},
 	components: {
 		Line,
@@ -57,7 +61,7 @@ export default {
 						label: this.chartName,
 						data: this.stats,
 						pointStyle: false,
-						borderColor: "#7445FB",
+						borderColor: this.lineColor,
 						usePointStyle: false,
 						tension: 0.3,
 						borderWidth: 2,

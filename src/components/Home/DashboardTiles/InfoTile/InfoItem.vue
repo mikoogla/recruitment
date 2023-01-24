@@ -23,11 +23,20 @@
 			<v-col cols="2">
 				<div class="box">
 					<div class="short">Change:</div>
-					<div class="long">{{ percentchange }}%</div>
+					<div
+						class="long"
+						:style="percentchange > 0 ? 'color: #2DC78F' : 'color: #EA4D4D'"
+					>
+						{{ percentchange }}%
+					</div>
 				</div>
 			</v-col>
 			<v-col class="d-flex justify-space-between align-center">
-				<MiniChart :labels="history" :stats="history" />
+				<MiniChart
+					:line-color="percentchange > 0 ? '#2DC78F' : '#EA4D4D'"
+					:labels="history"
+					:stats="history"
+				/>
 				<div class="buttons d-flex justify-end">
 					<CustomButton inverted>Sell</CustomButton>
 					<CustomButton class="ml-2">Buy</CustomButton>
@@ -48,7 +57,7 @@ export default {
 	data() {
 		return {
 			history: [],
-			price: (0).toLocaleString("en-US").replace(",", " "),
+			price: (0).toLocaleString("en-US"),
 			percentchange: 0,
 			fullCurrencyName: "",
 		}
@@ -68,9 +77,9 @@ export default {
 		this.history = self.getHistoricalData[self.name].quotes.map(quote =>
 			quote.quote.USD.price.toFixed(2)
 		)
-		this.price = self.getData[self.name][0].quote["USD"].price
-			.toLocaleString("en-US")
-			.replace(",", " ")
+		this.price =
+			self.getData[self.name][0].quote["USD"].price.toLocaleString("en-US")
+
 		this.percentchange =
 			self.getData[self.name][0].quote["USD"].percent_change_24h.toFixed(2)
 		this.fullCurrencyName = fullNames.find(
