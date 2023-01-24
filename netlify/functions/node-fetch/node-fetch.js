@@ -1,29 +1,37 @@
-const fetch = require('node-fetch')
+require("dotenv").config()
+const express = require("express")
+const axios = require("axios")
+const app = express()
+app.use(express.json())
 
-const handler = async function () {
-  try {
-    const response = await fetch('https://icanhazdadjoke.com', {
-      headers: { Accept: 'application/json' },
-    })
-    if (!response.ok) {
-      // NOT res.status >= 200 && res.status < 300
-      return { statusCode: response.status, body: response.statusText }
-    }
-    const data = await response.json()
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ msg: data.joke }),
-    }
-  } catch (error) {
-    // output to netlify function log
-    console.log(error)
-    return {
-      statusCode: 500,
-      // Could be a custom message or object i.e. JSON.stringify(err)
-      body: JSON.stringify({ msg: error.message }),
-    }
-  }
-}
-
-module.exports = { handler }
+const api = axios.create({
+	method: "GET",
+	baseURL:
+		"https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=BTC,ETH,ADA,AVAX,XRP",
+	headers: {
+		"X-CMC_PRO_API_KEY": process.env.COINMARKETCAP_API,
+	},
+})
+const history7d = axios.create({
+	method: "GET",
+	baseURL:
+		"https://sandbox-api.coinmarketcap.com/v2/cryptocurrency/quotes/historical?symbol=BTC,ETH,ADA,AVAX,XRP&count=7&interval=daily",
+	headers: {
+		"X-CMC_PRO_API_KEY": "b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c",
+	},
+})
+app.get("/api", (_, res) => {
+	api()
+		.then(response => response.data)
+		.then(value => res.json(value.data))
+		.catch(err => console.log(err))
+})
+app.get("/history", (_, res) => {
+	history7d()
+		.then(response => response.data)
+		.then(value => res.json(value.data))
+		.catch(err => console.log(err))
+})
+app.listen(4000, () => {
+	console.log("express server")
+})
