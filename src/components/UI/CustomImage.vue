@@ -14,7 +14,11 @@ export default {
 		imgName: {
 			type: String,
 			required: true,
+			default: "BTC",
 		},
+	},
+	mounted() {
+		console.log("my image name = " + this.imgName)
 	},
 }
 </script>

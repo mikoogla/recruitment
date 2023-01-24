@@ -1,5 +1,5 @@
 <template>
-	<BackgroundTile v-if="dataLoaded" radius="1rem" id="info-container"
+	<BackgroundTile v-if="getLoadingState" radius="1rem" id="info-container"
 		><InfoTabs />
 		<hr class="mb-6" />
 		<InfoItem
@@ -11,9 +11,10 @@
 	<BackgroundTile
 		v-else
 		radius="1rem"
-		class="d-flex justify-center align-center pa-10"
-		><h2>Loading...</h2></BackgroundTile
-	>
+		class="d-flex flex-column justify-center align-center pa-10"
+		><h2>Loading...</h2>
+		<v-progress-circular class="ma-5" indeterminate color="#7445FB"
+	/></BackgroundTile>
 </template>
 <script>
 import BackgroundTile from "../../../UI/BackgroundTile.vue"
@@ -22,22 +23,20 @@ import InfoTabs from "./InfoTabs.vue"
 import { mapActions, mapGetters } from "vuex"
 export default {
 	data() {
-		return {
-			dataLoaded: false,
-		}
+		return {}
 	},
 	name: "SummaryTile",
 	components: { BackgroundTile, InfoTabs, InfoItem },
 	methods: {
-		...mapActions(["fetchData", "fetchHistory"]),
+		...mapActions(["fetchData", "fetchHistory", "setLoadingState"]),
 	},
 	computed: {
-		...mapGetters(["getData"]),
+		...mapGetters(["getData", "getLoadingState"]),
 	},
 	async mounted() {
 		await this.fetchData()
 		await this.fetchHistory()
-		this.dataLoaded = true
+		this.setLoadingState(true)
 	},
 }
 </script>
