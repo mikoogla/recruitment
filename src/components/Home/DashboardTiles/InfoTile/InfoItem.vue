@@ -212,7 +212,7 @@ export default {
 }
 @media (min-width: 700px) {
 	#mini-chart {
-		margin: 0 1rem;
+		margin: 0 3rem;
 	}
 }
 @media (max-width: 700px) {
