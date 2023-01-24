@@ -1,10 +1,13 @@
 <template>
-	<v-app theme="light" style="max-height: 900px">
-		<v-main class="d-flex">
+	<v-app
+		theme="light"
+		style="max-height: 900px; height: 100%"
+		:full-height="false"
+	>
+		<div class="d-flex">
 			<SideBar />
-
 			<router-view />
-		</v-main>
+		</div>
 	</v-app>
 </template>
 
@@ -21,8 +24,13 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "@/styles/imports.scss";
-.v-main {
+.div {
 	max-height: 900px;
+}
+.v-application__wrap,
+.v-application {
+	max-height: 900px;
+	position: static;
 }
 </style>
 <style lang="scss">

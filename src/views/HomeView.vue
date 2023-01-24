@@ -32,6 +32,7 @@ export default defineComponent({
 @media (max-width: 768px) {
 	.home-container {
 		margin-left: 0;
+		padding: 3rem 1rem;
 	}
 }
 </style>

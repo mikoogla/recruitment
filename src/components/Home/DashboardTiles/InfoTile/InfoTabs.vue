@@ -55,6 +55,7 @@ export default {
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;
+	overflow: hidden;
 }
 .tab {
 	line-height: 2rem;

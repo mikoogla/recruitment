@@ -85,5 +85,6 @@ export default {
 	width: 100%;
 	height: 100%;
 	gap: 1rem;
+	white-space: nowrap;
 }
 </style>

@@ -1,5 +1,8 @@
 <template>
-	<div v-show="isExpanded" class="sidebar-container">
+	<div
+		v-show="isExpanded || $vuetify.display.width > 768"
+		class="sidebar-container"
+	>
 		<div class="logo-position">
 			<v-img src="@/assets/logo-full.png" contain max-width="100" class="" />
 		</div>
@@ -29,7 +32,7 @@
 		<AccountInfo id="account-info" />
 	</div>
 	<div class="expand">
-		<v-btn @click="isExpanded = !isExpanded">
+		<v-btn color="#7445FB" @click="isExpanded = !isExpanded">
 			<span v-if="!isExpanded" class="material-symbols-outlined">
 				arrow_forward_ios
 			</span>
@@ -47,7 +50,7 @@ import AccountInfo from "./AccountInfo.vue"
 export default {
 	name: "SideBar",
 	data: () => ({
-		isExpanded: true,
+		isExpanded: false,
 		sidebarItems: [],
 		favorites: ["BTC", "XRP"],
 	}),
@@ -77,15 +80,20 @@ hr {
 	left: 0;
 	top: 0;
 	width: 264px;
-	height: 100%;
+	height: 100vh;
 	max-height: 900px;
+	overflow: hidden;
 	background-color: $color-sidebar;
 	padding: 2rem 0.5rem;
+	z-index: 1;
 }
 .expand {
+	visibility: hidden;
 	position: absolute;
 	left: 0;
-	bottom: 50px;
+	top: 0.5rem;
+	color: #fff;
+	z-index: 2;
 }
 .logo-position {
 	width: 100%;
@@ -119,5 +127,17 @@ hr {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+}
+
+@media (max-width: 768px) {
+	.sidebar-container {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding: 3rem 0 0 0;
+	}
+	.expand {
+		visibility: visible;
+	}
 }
 </style>

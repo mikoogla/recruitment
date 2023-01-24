@@ -47,4 +47,11 @@ export default {
 	grid-row-end: 3;
 	grid-column-end: 3;
 }
+
+@media (max-width: 1220px) {
+	.dashboard-container {
+		display: flex;
+		flex-direction: column;
+	}
+}
 </style>

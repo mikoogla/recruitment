@@ -1,48 +1,42 @@
 <template>
 	<div class="info-item w-100">
-		<v-row no-gutters class="w-100">
-			<v-col cols="3" class="d-flex align-center">
-				<CustomImage :img-name="name" style="max-width: 3rem" class="mr-3" />
-				<div class="box d-flex flex-column w-25">
-					<div class="short">
-						{{ name }}
-					</div>
-					<div class="long">
-						{{ fullCurrencyName }}
-					</div>
+		<div class="segment start">
+			<CustomImage :img-name="name" style="max-width: 3rem" class="mr-3" />
+			<div class="box d-flex flex-column w-25">
+				<div class="short">
+					{{ name }}
 				</div>
-			</v-col>
+				<div class="long">
+					{{ fullCurrencyName }}
+				</div>
+			</div>
 
-			<v-col cols="2">
-				<div class="box">
-					<div class="short">Price:</div>
-					<div class="long">${{ price }}</div>
+			<div class="box">
+				<div class="short">Price:</div>
+				<div class="long">${{ price }}</div>
+			</div>
+		</div>
+		<div class="segment end">
+			<div class="box">
+				<div class="short">Change:</div>
+				<div
+					class="long"
+					:style="percentchange > 0 ? 'color: #2DC78F' : 'color: #EA4D4D'"
+				>
+					{{ percentchange }}%
 				</div>
-			</v-col>
+			</div>
 
-			<v-col cols="2">
-				<div class="box">
-					<div class="short">Change:</div>
-					<div
-						class="long"
-						:style="percentchange > 0 ? 'color: #2DC78F' : 'color: #EA4D4D'"
-					>
-						{{ percentchange }}%
-					</div>
-				</div>
-			</v-col>
-			<v-col class="d-flex justify-space-between align-center">
-				<MiniChart
-					:line-color="percentchange > 0 ? '#2DC78F' : '#EA4D4D'"
-					:labels="history"
-					:stats="history"
-				/>
-				<div class="buttons d-flex justify-end">
-					<CustomButton inverted>Sell</CustomButton>
-					<CustomButton class="ml-2">Buy</CustomButton>
-				</div>
-			</v-col>
-		</v-row>
+			<MiniChart
+				:line-color="percentchange > 0 ? '#2DC78F' : '#EA4D4D'"
+				:labels="history"
+				:stats="history"
+			/>
+			<div class="buttons">
+				<CustomButton inverted>Sell</CustomButton>
+				<CustomButton class="ml-2">Buy</CustomButton>
+			</div>
+		</div>
 	</div>
 </template>
 <script>
@@ -91,16 +85,23 @@ export default {
 </script>
 <style lang="scss" scoped>
 .info-item {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	align-items: center;
+	gap: 2rem;
 	padding: 0.5rem 0;
 	background-color: #ffffff;
 	border: 1px solid #ebebf3;
 	padding: 1rem;
 	border-radius: 0.5rem;
 	margin-bottom: 0.5rem;
+}
+.segment {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
 }
 .box {
 	& .short {
@@ -109,6 +110,48 @@ export default {
 	& .long {
 		color: #0a041c;
 		font-weight: 600;
+	}
+}
+.buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+@media (max-width: 1220px) {
+	.info-item {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+	.segment {
+		justify-content: start;
+	}
+	.buttons {
+		margin-top: 1rem;
+	}
+}
+
+@media (max-width: 968px) {
+	.info-item {
+		display: flex;
+		flex-direction: column;
+	}
+	.segment.end {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+
+		& .buttons {
+			grid-row-start: 2;
+			grid-column-start: 1;
+
+			grid-row-end: 3;
+			grid-column-end: 3;
+			justify-content: center;
+		}
+	}
+	.segment {
+		width: 100%;
+		justify-content: space-between;
 	}
 }
 </style>

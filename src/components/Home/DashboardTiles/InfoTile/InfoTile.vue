@@ -51,4 +51,10 @@ hr {
 	border-top: 1px solid #9896a1;
 	opacity: 0.2;
 }
+
+@media screen and (max-width: 768px) {
+	#info-container {
+		padding: 1rem 1rem 2rem 1rem;
+	}
+}
 </style>
